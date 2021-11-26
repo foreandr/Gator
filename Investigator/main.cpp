@@ -32,7 +32,6 @@ void rscan2(path const& f) {
 	}
 }
 void lookopen(path const& f) {
-	// Use dot operation instead, also ranged for
 	int count = 0;
 	string myfilestring;
 	ifstream myfile;
