@@ -36,13 +36,6 @@ int main(int argc, char* argv[]) {
 		testpaths.push_back(value);
 	};
 	run(testpaths);
-
-
-	
-
-
-
-
 }
 void rscan2(path const& f) {
 	cout << "\n\n Folder = " << absolute(f) << endl;
