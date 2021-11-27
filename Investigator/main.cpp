@@ -15,6 +15,7 @@ void rscan2(path const& f);
 int howManyLines(path const& f);
 void printLines(vector<path> paths);
 void run(vector<path> paths);
+int howManyLetter(path const& f, char ascii);
 // Command line arguments
 int main(int argc, char* argv[]) {
 	std::cout << "Thanks for using Gator\n";
@@ -35,6 +36,10 @@ int main(int argc, char* argv[]) {
 		//cout << value << endl;
 		testpaths.push_back(value);
 	};
+	testpaths.pop_back();
+	path path = "C:/Users/Andre/Desktop/FOLDER/badSite";
+	cout << howManyLetter(path, 'h');
+	testpaths.push_back(path);
 	run(testpaths);
 }
 void rscan2(path const& f) {
@@ -73,6 +78,27 @@ int howManyLines(path const& f) {
 		count += 1;
 	}
 	return numLines;
+}
+int howManyLetter(path const& f, char asciiEntered) {
+	int count = 0;
+	string myfilestring;
+	ifstream myfile;
+
+	int numchar = 0;
+
+	for (auto d : recursive_directory_iterator(f)) {
+		myfilestring = d.path().string();
+		ifstream myfile(myfilestring);
+		string currentString;
+		char c;
+		while (myfile.get(c)) {
+			if (c == asciiEntered) {
+				numchar++;
+			}
+		}
+		myfile.close();
+	}
+	return numchar;
 }
 void printLines(vector<path> paths) {
 	for (auto& value : paths) {
