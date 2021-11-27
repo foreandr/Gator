@@ -19,9 +19,8 @@ int main() {
 	if (!(exists(parentPath)))
 		cout << "NOT OK  - file doesnt exists" << endl;
 	
-	path testpath = "C:/Users/Andre/source/repos/Investigator/Investigator/PathTester";
-	path testpath2 = "C:/Users/Andre/source";
-	cout << howManyLines(testpath2);
+	path testpath = "ENTER PATH HERE";
+	cout << howManyLines(testpath);
 
 }
 void rscan2(path const& f) {
