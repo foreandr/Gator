@@ -38,7 +38,6 @@ int main(int argc, char* argv[]) {
 	};
 	testpaths.pop_back();
 	path path = "C:/Users/Andre/Desktop/FOLDER/badSite";
-	cout << howManyLetter(path, 'h');
 	testpaths.push_back(path);
 	run(testpaths);
 }
@@ -115,7 +114,17 @@ void run(vector<path> paths) {
 		run(paths);
 	}
 	else if (helpAnswer == 2) {
-		cout << "Chose 2";
+		char wantedChar;
+		cout << "Wanted Ascii Chracter:\n";
+		cin >> wantedChar;
+		for (auto value : paths) {
+			cout << "\nDirectory: " << value << " has [";
+			int value1 = howManyLetter(value, wantedChar);
+			printf("\x1B[92m%d\033[0m", value1);
+			cout << "] instances of of [";
+			printf("\x1B[92m%c\033[0m", wantedChar);
+			cout << "]" << endl;
+		}
 		run(paths);
 	}
 	else if (helpAnswer == 0) {
