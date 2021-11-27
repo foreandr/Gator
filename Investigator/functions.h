@@ -5,9 +5,20 @@ namespace std {
         return __os.put(__os.widen('\t'));
     }
 }
-/*path currentPath = "."; // Path object knows the right kind of string
-path canonicalpath = canonical(currentPath).string(); // path of current directory
-path parentPath = current_path().parent_path(); // Give me path to parent folder
-if (!(exists(parentPath)))
-        cout << "NOT OK  - file doesnt exists" << endl;
-*/
+void printOptions() {
+    std::cout << "Select an option:" << std::endl << std::tab <<
+        "1. Get number of lines in program" << std::endl << std::tab <<
+        "2. Do something else." << std::endl << std::tab << 
+        "0. Press 0 to exit." << std::endl << std::tab
+        ;
+}
+int help() {
+    printOptions();
+    int value;
+    std::cin >> value;
+    return value;
+}
+
+void process() {
+    help();
+}

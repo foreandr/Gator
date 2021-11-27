@@ -3,6 +3,7 @@
 #include <fstream>
 #include "functions.h"
 #include <deque>
+#include <windows.h>   // WinApi header
 /* Notes:
 * C++ 17 +
 
@@ -12,9 +13,11 @@ using namespace std;
 using namespace std::filesystem;
 void rscan2(path const& f);
 int howManyLines(path const& f);
-
+void printLines(vector<path> paths);
+void run(vector<path> paths);
 // Command line arguments
 int main(int argc, char* argv[]) {
+	std::cout << "Thanks for using Gator\n";
 	int argCount = argc;
 	deque <string> args(argv + 1, argv + argc);
 	if (args.empty())
@@ -25,18 +28,17 @@ int main(int argc, char* argv[]) {
 	else {
 		// cout << "Commandline arguments detected" << endl;
 	}
+	
 	vector<path> testpaths;
 	
 	for (auto &value : args) {
 		//cout << value << endl;
 		testpaths.push_back(value);
-	}
-	testpaths.push_back("C:/Users/Andre/source/repos/Investigator/Investigator/PathTester");
-	testpaths.push_back("C:/Users/Andre/source");
+	};
+	run(testpaths);
 
-	for (auto &value : testpaths) {
-		cout << howManyLines(value) << endl;
-	}
+
+	
 
 
 
@@ -78,4 +80,27 @@ int howManyLines(path const& f) {
 		count += 1;
 	}
 	return numLines;
+}
+void printLines(vector<path> paths) {
+	for (auto& value : paths) {
+		cout << "Directory: " << value << " has [";
+		int value1 = howManyLines(value);
+		printf("\x1B[92m%d\033[0m", value1);
+		cout << "] lines of code.\n" << endl;
+	}
+}
+void run(vector<path> paths) {
+	int helpAnswer = help();
+	if (helpAnswer == 1) {
+		printLines(paths);
+		run(paths);
+	}
+	else if (helpAnswer == 2) {
+		cout << "Chose 2";
+		run(paths);
+	}
+	else if (helpAnswer == 0) {
+		std::cout << "Thanks for using Gator\n";
+		exit(1);
+	}
 }
