@@ -2,6 +2,7 @@
 #include <filesystem>
 #include <fstream>
 #include "functions.h"
+#include <deque>
 /* Notes:
 * C++ 17 +
 
@@ -11,17 +12,34 @@ using namespace std;
 using namespace std::filesystem;
 void rscan2(path const& f);
 int howManyLines(path const& f);
-int main() {
-	path currentPath = "."; // Path object knows the right kind of string
-	path canonicalpath = canonical(currentPath).string(); // path of current directory
-	path parentPath = current_path().parent_path(); // Give me path to parent folder 
+
+// Command line arguments
+int main(int argc, char* argv[]) {
+	int argCount = argc;
+	deque <string> args(argv + 1, argv + argc);
+	if (args.empty())
+	{
+		cout << "Error: No commandline arguments detected - showing help" << endl;
+		// Show help = true
+	}
+	else {
+		// cout << "Commandline arguments detected" << endl;
+	}
+	vector<path> testpaths;
 	
-	if (!(exists(parentPath)))
-		cout << "NOT OK  - file doesnt exists" << endl;
-	
-	path testpath = "C:/Users/Andre/source/repos/Investigator/Investigator/PathTester";
-	path testpath2 = "C:/Users/Andre/source";
-	cout << howManyLines(testpath2);
+	for (auto &value : args) {
+		//cout << value << endl;
+		testpaths.push_back(value);
+	}
+	testpaths.push_back("C:/Users/Andre/source/repos/Investigator/Investigator/PathTester");
+	testpaths.push_back("C:/Users/Andre/source");
+
+	for (auto &value : testpaths) {
+		cout << howManyLines(value) << endl;
+	}
+
+
+
 
 }
 void rscan2(path const& f) {

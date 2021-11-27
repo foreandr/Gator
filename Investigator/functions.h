@@ -5,3 +5,9 @@ namespace std {
         return __os.put(__os.widen('\t'));
     }
 }
+/*path currentPath = "."; // Path object knows the right kind of string
+path canonicalpath = canonical(currentPath).string(); // path of current directory
+path parentPath = current_path().parent_path(); // Give me path to parent folder
+if (!(exists(parentPath)))
+        cout << "NOT OK  - file doesnt exists" << endl;
+*/
