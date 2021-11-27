@@ -18,7 +18,8 @@ void run(vector<path> paths);
 int howManyLetter(path const& f, char ascii);
 // Command line arguments
 int main(int argc, char* argv[]) {
-	std::cout << "Thanks for using Gator\n";
+	printIntroText();
+
 	int argCount = argc;
 	deque <string> args(argv + 1, argv + argc);
 	if (args.empty())
@@ -36,11 +37,26 @@ int main(int argc, char* argv[]) {
 		//cout << value << endl;
 		testpaths.push_back(value);
 	};
-	testpaths.pop_back();
-	path path = "C:/Users/Andre/Desktop/FOLDER/badSite";
+	testpaths.pop_back(); // Empty Vector
+	
+	path path;
+	
+	while (true) {	
+		cin >> path;
+		if (exists(path)){
+			cout << "All OK  - file exists" << endl;
+			break;
+		}
+		else {
+			cout << "Invalid Input or file Doesn't exist\n";
+			printIntroText();
+		}
+	}
 	testpaths.push_back(path);
 	run(testpaths);
 }
+
+
 void rscan2(path const& f) {
 	cout << "\n\n Folder = " << absolute(f) << endl;
 	// Use dot operation instead, also ranged for

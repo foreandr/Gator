@@ -8,7 +8,7 @@ namespace std {
 void printOptions() {
     std::cout << "Select an option:" << std::endl << std::tab <<
         "1. Get number of lines in program" << std::endl << std::tab <<
-        "2. Do something else." << std::endl << std::tab << 
+        "2. How many of a particular letter Ascii Char is in your code" << std::endl << std::tab << 
         "0. Press 0 to exit." << std::endl << std::tab
         ;
 }
@@ -21,4 +21,7 @@ int help() {
 
 void process() {
     help();
+}
+void printIntroText() {
+    std::cout << "Thanks for using Gator\nPlease enter the Path you would like to investigate:\n\n";
 }
