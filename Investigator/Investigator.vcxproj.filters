@@ -35,6 +35,7 @@
       <Filter>PathTester</Filter>
     </Text>
     <Text Include="Helper.txt" />
+    <Text Include="todo.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="test2.txt">
