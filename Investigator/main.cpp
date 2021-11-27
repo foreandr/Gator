@@ -10,7 +10,7 @@
 using namespace std;
 using namespace std::filesystem;
 void rscan2(path const& f);
-void lookopen(path const& f);
+int howManyLines(path const& f);
 int main() {
 	path currentPath = "."; // Path object knows the right kind of string
 	path canonicalpath = canonical(currentPath).string(); // path of current directory
@@ -20,7 +20,8 @@ int main() {
 		cout << "NOT OK  - file doesnt exists" << endl;
 	
 	path testpath = "C:/Users/Andre/source/repos/Investigator/Investigator/PathTester";
-	lookopen(testpath);
+	path testpath2 = "C:/Users/Andre/source";
+	cout << howManyLines(testpath2);
 
 }
 void rscan2(path const& f) {
@@ -31,19 +32,32 @@ void rscan2(path const& f) {
 			" ext= " << d.path().extension().string() << endl;
 	}
 }
-void lookopen(path const& f) {
+int howManyLines(path const& f) {
 	int count = 0;
 	string myfilestring;
 	ifstream myfile;
+	
+	int numLines = 0;
+
 	for (auto d : recursive_directory_iterator(f)) {
 		myfilestring = d.path().string(); 
 		//cout << myfilestring << endl; // print out current file name FULL path
 		
-		myfile.open(myfilestring); 
-		std::cout << myfile.rdbuf() << tab << count << endl;
+
+		// OG
+		ifstream myfile(myfilestring);
+		
+		string currentString;
+		while (getline(myfile, currentString)) {
+			// Output the text from the file
+			numLines += 1;
+			//cout << currentString;
+		}
+		
+		//currentString = myfile.rdbuf();
+		//std::cout << myfile.rdbuf() << tab << count << endl;
 		myfile.close();
 		count += 1;
 	}
-
-	
+	return numLines;
 }
