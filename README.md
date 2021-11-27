@@ -1,3 +1,3 @@
 Gator
 
-tool for investigating code
+C++ command line tool for investigating your code.
