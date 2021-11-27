@@ -24,6 +24,7 @@
     <ProjectGuid>{b35a2b29-b2a8-47dc-bb1b-4a255c53f7fc}</ProjectGuid>
     <RootNamespace>Investigator</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Gator</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
