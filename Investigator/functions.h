@@ -18,7 +18,6 @@ int help() {
     std::cin >> value;
     return value;
 }
-
 void process() {
     help();
 }

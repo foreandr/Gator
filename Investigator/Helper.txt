@@ -11,4 +11,20 @@ if (!(exists(parentPath)))
 testpaths.push_back("C:/Users/Andre/source/repos/Investigator/Investigator/PathTester");
 testpaths.push_back("C:/Users/Andre/source");
 
+	for (auto &value : args) {
+		//cout << value << endl;
+		testpaths.push_back(value);
+	};
+
+	
+	int argCount = argc;
+	deque <string> args(argv + 1, argv + argc);
+	if (args.empty())
+	{
+		cout << "Error: No commandline arguments detected - showing help" << endl;
+		// Show help = true
+	}
+	else {
+		// cout << "Commandline arguments detected" << endl;
+	}
 
