@@ -1,1 +1,2 @@
 add a specification for the extension of files that you want to open.
+add a way to query for specific text, and return the directory / file it's in
