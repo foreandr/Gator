@@ -6,9 +6,12 @@
 #include <windows.h>   // WinApi header
 /* Notes:
 * C++ 17 +
+* When using automatic command arguments, cannot put in wrong file
 */
 using namespace std;
 using namespace std::filesystem;
+
+void searchFileFor(path const& f, string wantedString);
 void rscan2(path const& f);
 int howManyLines(path const& f);
 void printLines(vector<path> paths);
@@ -18,14 +21,19 @@ int howManyLetter(path const& f, char ascii);
 int main(int argc, char* argv[]) {
 	printIntroText();
 	vector<path> testpaths;
+	
+	//cout << argv[1]; // Look for path file
+	
 	path path;
 	while (true) {	
-		cin >> path;
+		//cin >> path; // PUT BACK
+		path = argv[1];
 		if (exists(path)){
 			cout << "All OK  - file exists" << endl;
 			break;
 		}
 		else {
+
 			cout << "Invalid Input or file Doesn't exist\n";
 			printIntroText();
 		}
@@ -100,7 +108,8 @@ void printLines(vector<path> paths) {
 	}
 }
 void run(vector<path> paths) {
-	int helpAnswer = help();
+	//int helpAnswer = help(); // Switch back after
+	int helpAnswer = 3;
 	if (helpAnswer == 1) {
 		printLines(paths);
 		run(paths);
@@ -119,8 +128,46 @@ void run(vector<path> paths) {
 		}
 		run(paths);
 	}
+	else if (helpAnswer == 3) {
+		cout << "You picked 3\n";
+		// looking for a particular text string related to connection
+		for (auto value : paths) { 
+			searchFileFor(value, "not connected"); // Change input to be like 2 after
+		}
+		
+
+		//run(paths);
+	}
 	else if (helpAnswer == 0) {
 		std::cout << "Thanks for using Gator\n";
 		exit(1);
 	}
+}
+void searchFileFor(path const& files, string wantedString) {
+	
+	ifstream inFile;
+	string currentString;
+
+	vector<string> vecOfWantedSearch;
+	int lineNumber = 0;
+	bool foundNothing = true;
+
+	for (auto file : recursive_directory_iterator(files)) {
+		lineNumber = 0; // Reset after each new file
+		inFile.open(file);
+		while (inFile >> currentString) {
+			lineNumber++;
+			if (currentString.find(wantedString) != string::npos) {
+				cout << file << " " << wantedString << " " << lineNumber << '\n';
+				foundNothing = false;
+			}
+			//cout << file << " " <<  currentString << endl;
+		}
+		inFile.close();
+	}
+	if (foundNothing == true) {
+		cout << "We were not able to find: " << wantedString << "";
+		//printf("\x1B[92m%s\033[0m", wantedString);
+	}
+	//cout << "Wanted String: " << wantedString;
 }

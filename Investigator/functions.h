@@ -1,4 +1,5 @@
 namespace std {
+    // Tab character off stack overflow
     template <typename _CharT, typename _Traits>
     inline basic_ostream<_CharT, _Traits>&
         tab(basic_ostream<_CharT, _Traits>& __os) {
@@ -9,6 +10,7 @@ void printOptions() {
     std::cout << "Select an option:" << std::endl << std::tab <<
         "1. Get number of lines in program" << std::endl << std::tab <<
         "2. How many of a particular letter Ascii Char is in your code" << std::endl << std::tab << 
+        "3. Testing Currnently" << std::endl << std::tab <<
         "0. Press 0 to exit." << std::endl << std::tab
         ;
 }
