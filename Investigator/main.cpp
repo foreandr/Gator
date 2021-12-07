@@ -167,7 +167,7 @@ void searchFileFor(path const& files, string wantedString) {
 	}
 	if (foundNothing == true) {
 		cout << "We were not able to find: " << wantedString << "";
-		printf("\x1B[92m%s\033[0m", wantedString);
+		//printf("\x1B[92m%s\033[0m", wantedString);
 	}
 	//cout << "Wanted String: " << wantedString;
 }
