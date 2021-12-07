@@ -9,6 +9,7 @@
 */
 using namespace std;
 using namespace std::filesystem;
+void searchFileFor(string wantedString);
 void rscan2(path const& f);
 int howManyLines(path const& f);
 void printLines(vector<path> paths);
@@ -18,9 +19,13 @@ int howManyLetter(path const& f, char ascii);
 int main(int argc, char* argv[]) {
 	printIntroText();
 	vector<path> testpaths;
+	
+	//cout << argv[1]; // Look for path file
+	
 	path path;
 	while (true) {	
-		cin >> path;
+		//cin >> path; // PUT BACK
+		path = argv[1];
 		if (exists(path)){
 			cout << "All OK  - file exists" << endl;
 			break;
@@ -100,7 +105,8 @@ void printLines(vector<path> paths) {
 	}
 }
 void run(vector<path> paths) {
-	int helpAnswer = help();
+	//int helpAnswer = help(); // Switch back after
+	int helpAnswer = 3;
 	if (helpAnswer == 1) {
 		printLines(paths);
 		run(paths);
@@ -119,8 +125,18 @@ void run(vector<path> paths) {
 		}
 		run(paths);
 	}
+	else if (helpAnswer == 3) {
+		cout << "You picked 3\n"; 
+		// looking for a particular text string related to connection
+		searchFileFor("Andre"); // Change input to be like 2 after
+
+		//run(paths);
+	}
 	else if (helpAnswer == 0) {
 		std::cout << "Thanks for using Gator\n";
 		exit(1);
 	}
+}
+void searchFileFor(string wantedString) {
+	cout << wantedString;
 }
