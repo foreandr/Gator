@@ -132,7 +132,7 @@ void run(vector<path> paths) {
 		cout << "You picked 3\n";
 		// looking for a particular text string related to connection
 		for (auto value : paths) { 
-			searchFileFor(value, "not connected"); // Change input to be like 2 after
+			searchFileFor(value, ""); // Change input to be like 2 after
 		}
 		
 
