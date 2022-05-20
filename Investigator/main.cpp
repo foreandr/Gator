@@ -24,18 +24,21 @@ int main(int argc, char* argv[]) {
 	
 	//cout << argv[1]; // Look for path file
 	
-	path path;
+	path path = "C:/Users/aforeman/Dropbox (PI)/PC/Documents/TESTING DOCKER/LUISINDICO";
 	while (true) {	
 		//cin >> path; // PUT BACK
-		path = argv[1];
+		// path = argv[1];
 		if (exists(path)){
+			//exit(1);
 			cout << "All OK  - file exists" << endl;
 			break;
+
 		}
 		else {
 
 			cout << "Invalid Input or file Doesn't exist\n";
 			printIntroText();
+			exit(1);
 		}
 	}
 	testpaths.push_back(path);
@@ -132,7 +135,7 @@ void run(vector<path> paths) {
 		cout << "You picked 3\n";
 		// looking for a particular text string related to connection
 		for (auto value : paths) { 
-			searchFileFor(value, ""); // Change input to be like 2 after
+			searchFileFor(value, "python"); // Change input to be like 2 after
 		}
 		
 
