@@ -1,3 +1,3 @@
 Gator
 
-C++ command line tool for investigating your code.
+Needed to scrape my repo's, debugger wasn't helping.
