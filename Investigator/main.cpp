@@ -15,7 +15,7 @@ void searchFileFor(path const& f, string wantedString);
 void rscan2(path const& f);
 int howManyLines(path const& f);
 void printLines(vector<path> paths);
-void run(vector<path> paths);
+void run(vector<path> paths, string wanted_string, int helpAnswer);
 int howManyLetter(path const& f, char ascii);
 // Command line arguments
 int main(int argc, char* argv[]) {
@@ -24,7 +24,7 @@ int main(int argc, char* argv[]) {
 	
 	//cout << argv[1]; // Look for path file
 	
-	path path = "C:/Users/aforeman/Dropbox (PI)/PC/Documents/TESTING DOCKER/LUISINDICO";
+	path path = "D:/mansura/templates";
 	while (true) {	
 		//cin >> path; // PUT BACK
 		// path = argv[1];
@@ -42,7 +42,7 @@ int main(int argc, char* argv[]) {
 		}
 	}
 	testpaths.push_back(path);
-	run(testpaths);
+	run(testpaths, "search_text_by_category", 3);
 }
 void rscan2(path const& f) {
 	cout << "\n\n Folder = " << absolute(f) << endl;
@@ -110,12 +110,11 @@ void printLines(vector<path> paths) {
 		cout << "] lines of code.\n" << endl;
 	}
 }
-void run(vector<path> paths) {
+void run(vector<path> paths, string wanted_string, int helpAnswer) {
 	//int helpAnswer = help(); // Switch back after
-	int helpAnswer = 3;
 	if (helpAnswer == 1) {
 		printLines(paths);
-		run(paths);
+		// run(paths);
 	}
 	else if (helpAnswer == 2) {
 		char wantedChar;
@@ -129,13 +128,13 @@ void run(vector<path> paths) {
 			printf("\x1B[92m%c\033[0m", wantedChar);
 			cout << "]" << endl;
 		}
-		run(paths);
+		// run(paths)
 	}
 	else if (helpAnswer == 3) {
 		cout << "You picked 3\n";
 		// looking for a particular text string related to connection
 		for (auto value : paths) { 
-			searchFileFor(value, "python"); // Change input to be like 2 after
+			searchFileFor(value, wanted_string); // Change input to be like 2 after
 		}
 		
 
